@@ -1,0 +1,28 @@
+/* CONFIGURAÇÕES RELACIONADAS A TABELA DE ANIMAIS CADASTRADOS */
+#moduloCadastro{
+    color: var(--blue);
+}
+
+  /* CONFIGURAÇÕES RELACIONADAS A PÁGINA DE CADASTRO*/
+  #cadastroAnimais{
+    padding-top: 80px;
+  }
+  
+  #botaoSubmit{
+    padding-top: 10px;
+  }
+  
+  .btn {
+    width: 80px;
+  }
+  
+  #tabelaAnimais {
+    padding-top: 50px;
+    font-size: 30px;
+    padding-bottom: 30px;
+  }
+
+  .table{
+    color:var(--blue);  
+    border: 2px solid var(--blue);
+  }

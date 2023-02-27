@@ -1,0 +1,31 @@
+.navbar {
+    background-color: var(--blue-light);
+  }  
+  
+  .navbar-brand{
+    position: left;
+    left:50%;
+    top:5px;
+  }
+    
+  .nav-link{
+    transition:all 0.5s;
+  }
+    
+  .nav-link.active{
+    color: var(--blue-light2);
+  }
+    
+  .nav-link:hover{
+    color: var(--blue-light2);
+    transition:all 0.5s;
+  }
+    
+  .configNavbar{
+    height: 100px;
+  }
+
+  li.nav-item a{
+    padding:58px 10px;
+    color: var(--blue);
+  }

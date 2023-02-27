@@ -1,0 +1,35 @@
+.page-footer{
+    width: 100%;
+    bottom: 0px;
+    background-color: var(--blue-light);
+    padding:10px;
+    color: var(--blue);
+   }
+  
+  .footer-social a{
+    text-decoration:none;
+    color:var(--green);
+  }
+  
+  .footer-social a i{
+    font-size: 38px;
+  }
+  
+  .footer-social a:hover{
+    color: var(--green-light); 
+    transition:all 0.5s;
+  }
+  
+  .footer-copyright a{
+    text-decoration:none;
+    color: var(--blue);
+  }
+  
+  .footer-copyright a:hover{
+    color: var(--blue-light2);
+    transition:all 0.5s;
+  }
+  
+  .footer-copyright{
+    font-size: 14px;
+  }
