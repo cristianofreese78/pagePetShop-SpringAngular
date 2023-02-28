@@ -15,8 +15,13 @@ import { CadastroService } from '../cadastro.service';
 export class CadastroComponent implements OnInit {
   public animais: IAnimal[] = [];
   public tratamentos: ITratamento[] = [];
-  public detalhesAnimal: IDetalheAnimal[] = [];
-
+  public detalhesAnimal: IDetalheAnimal[] = [];  
+  
+  especieSelecionada = '';
+  racaSelecionada: String[] = [];
+  pelPlumSelecionada: String[] = [];
+  Detalhes: IDetalheAnimal[] =[];
+ 
   constructor (private cadastroService: CadastroService){}
 
   ngOnInit(): void {
@@ -24,7 +29,7 @@ export class CadastroComponent implements OnInit {
     this.listarAnimais();
     this.listarDetalhes();
   }
-
+  
   public listarTratamentos(): void{    
     this.cadastroService.obtemTratamentos().subscribe(
       (response: ITratamento[]) => {
@@ -58,33 +63,41 @@ export class CadastroComponent implements OnInit {
     );
   }
 
-  carregaCombosEspecie(){
-    alert('blur');
+  carregaCombosDetalhes(value:string): void {
+    this.especieSelecionada = value;
+    this.Detalhes = this.detalhesAnimal.filter(detalhes => (detalhes.especieDetalhe == this.especieSelecionada));
+    console.log(this.Detalhes[0].racaDetalhe);
+    console.log(this.Detalhes[0].pelPlumDetalhe);
+    this.racaSelecionada = this.Detalhes[0].racaDetalhe;
+    this.pelPlumSelecionada = this.Detalhes[0].pelPlumDetalhe;
+  }
+
+  limpaCombosDetalhes() {
+    this.racaSelecionada = [];
+    this.pelPlumSelecionada = [];
   }
   
   public cadastrarAnimal(addForm: NgForm) :void{
-    alert("Cria Registro");
-    //document.getElementById('add-employee-form')?.click();
-
-      this.cadastroService.adicionarAnimal(addForm.value).subscribe(
-        (response: IAnimal) =>{
-          console.log(response);
+    this.cadastroService.adicionarAnimal(addForm.value).subscribe(
+      (response: IAnimal) =>{
+        this.listarAnimais(); 
+        addForm.reset();         
+      },
+      (error: HttpErrorResponse)=>{
+        if (error.status == 200 && error.statusText == "OK") {
           this.listarAnimais();
-          addForm.reset();
-        },
-        (error: HttpErrorResponse)=>{
-          alert(error.message)
+          addForm.reset();          
         }
-      )
-  }
-  
+        else {alert(error.message); addForm.reset();}                    
+      }        
+    )      
+  }  
 
-  editarAnimal(animalId: string){
-    alert("Edita Registro " + animalId);
-  }
-
-  removerAnimal(animalId: String){
-    alert("Remove Registro " + animalId);
+  editarAnimal(){
+    alert("Edita Registro ");
   }
 
+  removerAnimal(){
+    alert("Remove Registro ");
+  }
 }

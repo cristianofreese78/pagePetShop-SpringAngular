@@ -1,12 +1,10 @@
 /* CONFIGURAÇÕES RELACIONADAS A TABELA DE ANIMAIS CADASTRADOS */
 #moduloCadastro{
     color: var(--blue);
+    padding-top: 80px;
 }
 
   /* CONFIGURAÇÕES RELACIONADAS A PÁGINA DE CADASTRO*/
-  #cadastroAnimais{
-    padding-top: 80px;
-  }
   
   #botaoSubmit{
     padding-top: 10px;

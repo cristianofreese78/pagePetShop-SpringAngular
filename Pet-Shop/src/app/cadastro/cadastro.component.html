@@ -2,40 +2,46 @@
     <div class="row">
         <div class="col-sm">
             <form #addForm="ngForm" class="row g-3 mb-4" (ngSubmit)="cadastrarAnimal(addForm)">
-                <div class="form-group col-md-12">
+                <div class="col-md-12">
                     <label for="nomeAnimal" class="form-label">Nome do animal</label>
-                    <input type="text" ngModel name="nome" class="form-control" id="nomeAnimal" required>
-                    
+                    <input type="text" ngModel name="nome" class="form-control" id="nomeAnimal" required>                    
                 </div>
                 
-                <div class="form-group col-md-8">
+                <div class="col-md-8">
                     <label for="especieAnimal" class="form-label">Espécie</label>
-                    <select type="text" ngModel name="especie" class="form-control" id="especieAnimal" (blur)="carregaCombosEspecie()">
+                    <select type="text" ngModel name="especie" class="form-control" #especieAnimal (blur)="carregaCombosDetalhes(especieAnimal.value)" (click)="limpaCombosDetalhes()">
                         <option></option>
                         <option id="op" *ngFor="let detalheAnimal of detalhesAnimal" value="{{detalheAnimal.especieDetalhe}}">{{detalheAnimal.especieDetalhe}}</option>
                     </select>
                 </div>
         
-                <div class="form-group col-md-2">
+                <div class="col-md-2">
                     <label for="pesoAnimal" class="form-label">Peso (kg)</label>
                     <input type="text" ngModel name="peso" class="form-control" id="pesoAnimal">
                 </div>
-                <div class="form-group col-md-2">
+
+                <div class="col-md-2">
                     <label for="alturaAnimal" class="form-label">Altura (cm)</label>
                     <input type="text" ngModel name="altura" class="form-control" id="alturaAnimal">
                 </div>        
                
-                <div  class="form-group col-md-6">
+                <div  class="col-md-6">
                     <label for="racaAnimal" class="form-label">Raça</label>
-                    <select type="text" ngModel name="raca" class="form-control" id="racaAnimal"><option>2</option></select>
+                    <select type="text" ngModel name="raca" class="form-control" id="racaAnimal">
+                        <option></option>
+                        <option *ngFor="let raca of racaSelecionada" value="{{raca}}">{{raca}}</option>
+                    </select>              
                 </div>
         
-                <div  class="form-group col-md-6">
+                <div  class="col-md-6">
                     <label for="tipoPelPlumAnimal" class="form-label">Tipo Pelagem/Plumagem</label>
-                    <select type="text" ngModel name="tipoPelPlum" class="form-control" id="tipoPelPlumAnimal"><option>1</option></select>
+                    <select type="text" ngModel name="tipoPelPlum" class="form-control" id="tipoPelPlumAnimal">
+                        <option></option>
+                        <option *ngFor="let pelPlum of pelPlumSelecionada" value="{{pelPlum}}">{{pelPlum}}</option>
+                    </select> 
                 </div>
         
-                <div  class="form-group col-md-12">
+                <div  class="col-md-12">
                     <label for="tratamentoAnimal" class="form-label">Descrição Tratamento</label>
                     <select type="text" ngModel name="tratamento" class="form-control" id="tratamentoAnimal">                        
                         <option></option>
@@ -81,8 +87,8 @@
                         <td>{{animal.tipoPelPlum}}</td>
                         <td>{{animal.tratamento}}</td>
                         <td>
-                            <button class="btn btn-warning" (click)="editarAnimal(animal.id)">Editar</button> 
-                            <button class="btn btn-danger btn-block" (click)="removerAnimal(animal.id)">Deletar</button>
+                            <button class="btn btn-warning" (click)="editarAnimal()">Editar</button> 
+                            <button class="btn btn-danger btn-block" (click)="removerAnimal()">Deletar</button>
                         </td> 
                     </tr>
                 </tbody>
