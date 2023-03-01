@@ -28,5 +28,13 @@ export class CadastroService {
 
   public adicionarAnimal(animal: IAnimal): Observable<IAnimal> {
     return this.http.post<IAnimal>(`${this.apiServerUrl}/animal/`, animal);  
+  }
+  
+  public removeAnimal(idAnimal: String | undefined): Observable<void> {
+    return this.http.delete<void>(`${this.apiServerUrl}/animal/${idAnimal}`);
+  }
+
+  public editarAnimal(animal: IAnimal): Observable<IAnimal> {
+    return this.http.put<IAnimal>(`${this.apiServerUrl}/animal/${animal.id}`, animal);
   }  
 }

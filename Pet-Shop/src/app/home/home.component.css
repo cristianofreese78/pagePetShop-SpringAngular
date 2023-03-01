@@ -1,13 +1,13 @@
 @media only screen and (max-width: 899px) {
     #introInicio {
-     background-image: url("/Pet-Shop/src/assets/logoInicio2.png");
+     background-image: url("../home/assetsInternos/logoInicio2.png");    
       height: 75vh;
     }    
   }
   
   @media screen and (min-width:990px) {
     #introInicio {
-      background-image: url("/Pet-Shop/src/assets/logoInicio.png");
-      height: 100vh;
+      background-image: url("../home/assetsInternos/logoInicio.png");
+      height:100vh;  
     }
   }

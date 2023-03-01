@@ -1,7 +1,7 @@
 <div class="container-fluid" id="moduloCadastro">    
     <div class="row">
         <div class="col-sm">
-            <form #addForm="ngForm" class="row g-3 mb-4" (ngSubmit)="cadastrarAnimal(addForm)">
+            <form #Form="ngForm" id="formAnimal" class="row g-3 mb-4" (ngSubmit)="enviaForm(Form)">
                 <div class="col-md-12">
                     <label for="nomeAnimal" class="form-label">Nome do animal</label>
                     <input type="text" ngModel name="nome" class="form-control" id="nomeAnimal" required>                    
@@ -50,7 +50,7 @@
                 </div>
                 
                 <div class="col-8" id="botaoSubmit">
-                    <button [disabled]="addForm.invalid" type="submit" class="btn btn-primary">Enviar</button>  
+                    <button [disabled]="Form.invalid" type="submit" name="modoForm" class="btn btn-primary">{{modoForm}}</button>  
                 </div>
             </form>
         </div>      
@@ -87,8 +87,8 @@
                         <td>{{animal.tipoPelPlum}}</td>
                         <td>{{animal.tratamento}}</td>
                         <td>
-                            <button class="btn btn-warning" (click)="editarAnimal()">Editar</button> 
-                            <button class="btn btn-danger btn-block" (click)="removerAnimal()">Deletar</button>
+                            <button class="btn btn-warning" (click)="carregaAnimal(Form, animal.id)">Editar</button> 
+                            <button class="btn btn-danger btn-block" (click)="removerAnimal(Form, animal.id)">Deletar</button>
                         </td> 
                     </tr>
                 </tbody>
